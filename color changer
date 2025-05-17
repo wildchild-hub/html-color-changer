@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Changer</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Color Changer</h1>
+        <div id="color-box"></div>
+        <button id="change-color-btn">Change Color</button>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const colorBox = document.getElementById("color-box");
+    const changeColorBtn = document.getElementById("change-color-btn");
+
+    // Function to generate a random hexadecimal color
+    function getRandomColor() {
+        const hexChars = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += hexChars[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Add click event listener to the button
+    changeColorBtn.addEventListener("click", () => {
+        const newColor = getRandomColor();
+        colorBox.style.backgroundColor = newColor;
+    });
+});
+
+/* Center the container and add top margin */
+.container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the color box */
+#color-box {
+    width: 200px;
+    height: 200px;
+    background-color: #3498db; /* default color */
+    margin: 20px 0;
+    border: 2px solid #000;
+    border-radius: 8px;
+}
+
+/* Style the button */
+#change-color-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#change-color-btn:hover {
+    background-color: #27ae60;
+}
